@@ -1,0 +1,102 @@
+/* Movie.css */
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 70vw; /* Set the search container to take up 70% of the screen width */ 
+  display: flex; /* Add display property */
+  align-items: center;
+  justify-content: space-between; /* Adjusted to space between */
+}
+
+/* Additional style for left alignment */
+.left-search {
+  width: 50%; /* Adjusted width for left search */
+}
+
+/* Adjusted styles for buttons */
+.btn {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0d47a1;
+}
+
+.movie {
+  width: 300px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s;
+  display: inline-block;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+}
+
+.card-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card-text {
+  margin: 5px 0;
+}
+
+.btn-rent {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+/* Popup styles */
+.popup-content {
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+}
+
+/* AddMovie component styles (adjust as needed) */
+.add-movie-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 20px auto;
+}
+
+.add-movie-form > * {
+  margin-bottom: 15px;
+}
+
+.add-movie-form button {
+  background-color: #2196f3;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.add-movie-form button:hover {
+  background-color: #0d47a1;
+}
+
+TextField{
+  width:70%;
+}

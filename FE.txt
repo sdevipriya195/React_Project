@@ -1,0 +1,697 @@
+AddGenre.js
+
+import { useState } from "react";
+import './Movie.css';
+
+function AddGenre(){
+    const [genreName,setGenreName] = useState("");
+    var genre;
+    var clickAdd = ()=>{
+        alert('You clicked the button');
+       genre={
+        "genreName":genreName
+        }
+        console.log(genre);
+        fetch('http://localhost:5042/api/Genre',{
+            method:'POST',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(genre)
+        }).then(
+            ()=>{
+                alert("Genre Added");
+            }
+        ).catch((e)=>{
+            console.log(e)
+        })
+    }
+
+
+    return(
+        <div className="inputcontainer">
+            <label className="form-control" for="gname">Genre Name</label>
+            <input id="gname" type="text" className="form-control" value={genreName} onChange={(e)=>{setGenreName(e.target.value)}}/>
+            <button onClick={clickAdd} className="btn btn-primary">Add Genre</button>
+        </div>
+    );
+}
+
+export default AddGenre;
+---------------------------------------------------------------------
+AddMovie.js
+
+import { useState } from "react";
+import './Movie.css';
+
+function AddMovie(){
+    const [movieName,setMovieName] = useState("");
+    const [discNumber,setDiscNumber] = useState(0);
+    const [image,setImage] = useState("");
+    const [movieDescription,setMovieDescription] = useState("");
+    const [movieDuration,setMovieDuration] = useState(0);
+    const [movieRating,setMovieRating] = useState(0);
+    const [movieRentalCost,setMovieRentalCost] = useState(0);
+
+    var movie;
+    var clickAdd = ()=>{
+        alert('You clicked the button');
+       movie={
+        "movieName":movieName,
+        "discNumber":discNumber,
+        "image":image,
+        "movieDescription":movieDescription,
+        "movieDuration":movieDuration,
+        "movieRating":movieRating,
+        "movieRentalCost":movieRentalCost
+        }
+        console.log(movie);
+        fetch('http://localhost:5042/api/Movie',{
+            method:'POST',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(movie)
+        }).then(
+            ()=>{
+                alert("Movie Added");
+            }
+        ).catch((e)=>{
+            console.log(e)
+        })
+    }
+
+
+    return(
+        <div className="inputcontainer">
+            <label className="form-control" for="mname">Movie Name</label>
+            <input id="mname" type="text" className="form-control" value={movieName} onChange={(e)=>{setMovieName(e.target.value)}}/> <br />
+            <label className="form-control"  for="dno">Disc Number</label>
+            <input id="dno" type="number" className="form-control" value={discNumber} onChange={(e)=>{setDiscNumber(e.target.value)}}/> <br />
+            <label className="form-control" for="img">Movie Image</label>
+            <input id="img" type="text" className="form-control" value={image} onChange={(e)=>{setImage(e.target.value)}}/> <br />
+            <label className="form-control" for="mdes">Movie Description</label>
+            <input id="mdes" type="text" className="form-control" value={movieDescription} onChange={(e)=>{setMovieDescription(e.target.value)}}/> <br />
+            <label className="form-control"  for="mdur">Movie Duration</label> 
+            <input id="mdur" type="number" className="form-control" value={movieDuration} onChange={(e)=>{setMovieDuration(e.target.value)}}/> <br />
+
+            <label className="form-control"  for="mrat">Movie Rating</label> 
+            <input id="mrat" type="number" className="form-control" value={movieRating} onChange={(e)=>{setMovieRating(e.target.value)}}/> <br />
+            <label className="form-control"  for="mcst">Movie Rental Cost</label> 
+            <input id="mcst" type="number" className="form-control" value={movieRentalCost} onChange={(e)=>{setMovieRentalCost(e.target.value)}}/> <br />
+            <button onClick={clickAdd} className="btn btn-primary">Add Movie</button>
+        </div>
+    );
+}
+export default AddMovie;
+---------------------------------------------------------------------------------------------
+AddPayment.js
+
+import { useState } from "react";
+import './Movie.css';
+
+function AddPayment(){
+    const [paymentDate,setPaymentDate] = useState(0);
+    const [cardNumber,setCardNumber] = useState(0);
+    const [rentalId,setRentalId] = useState(0);
+    
+    var payment;
+    var clickAdd = ()=>{
+        alert('You clicked the button');
+       payment={
+        "paymentDate":paymentDate,
+        "cardNumber":cardNumber,
+        "rentalId":rentalId
+        }
+        console.log(payment);
+        fetch('http://localhost:5042/api/Payments',{
+            method:'POST',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(payment)
+        }).then(
+            ()=>{
+                alert("Payment Added");
+            }
+        ).catch((e)=>{
+            console.log(e)
+        })
+    }
+
+
+    return(
+        <div className="inputcontainer">
+            <label className="form-control"  for="pdat">Payment Date</label> 
+            <input id="pdat" type="number" className="form-control" value={paymentDate} onChange={(e)=>{setPaymentDate(e.target.value)}}/> <br />
+            <label className="form-control"  for="cno">Card Number</label> 
+            <input id="cno" type="number" className="form-control" value={cardNumber} onChange={(e)=>{setCardNumber(e.target.value)}}/> <br />
+            <label className="form-control"  for="rid">Rental Id</label> 
+            <input id="rid" type="number" className="form-control" value={rentalId} onChange={(e)=>{setRentalId(e.target.value)}}/> <br />
+            <button onClick={clickAdd} className="btn btn-primary">Add Payment</button>
+        </div>
+    );
+}
+export default AddPayment;
+-----------------------------------------------------------------------
+AddRental.js
+
+import { useState } from "react";
+import './Movie.css';
+
+function AddRental(){
+    const [rentalDate,setRentalDate] = useState("");
+    const [rentalCost,setRentalCost] = useState(0);
+    const [movieId,setMovieId] = useState(0);
+    
+
+    var rental;
+    var clickAdd = ()=>{
+        alert('You clicked the button');
+       rental={
+        "rentalDate":rentalDate,
+        "rentalCost":rentalCost,
+        "movieId":movieId
+        
+        }
+        console.log(rental);
+        fetch('http://localhost:5042/api/Rental',{
+            method:'POST',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            },
+            body:JSON.stringify(rental)
+        }).then(
+            ()=>{
+                alert("Rental Added");
+            }
+        ).catch((e)=>{
+            console.log(e)
+        })
+    }
+
+
+    return(
+        <div className="inputcontainer">
+            <label className="form-control" for="rdate">Rental date</label>
+            <input id="rdate" type="date" className="form-control" value={rentalDate} onChange={(e)=>{setRentalDate(e.target.value)}}/> <br />
+            <label className="form-control"  for="rcost">Rental Cost</label>
+            <input id="rcost" type="number" className="form-control" value={rentalCost} onChange={(e)=>{setRentalCost(e.target.value)}}/> <br />
+            <label className="form-control"  for="mid">Movie Id</label> 
+            <input id="mId" type="number" className="form-control" value={movieId} onChange={(e)=>{setMovieId(e.target.value)}}/> <br />
+            <button onClick={clickAdd} className="btn btn-primary">Add Rental</button>
+        </div>
+    );
+}
+export default AddRental;
+--------------------------------------
+Genres.js
+
+import { useState } from "react";
+
+function Genres(){
+    const [genreList,setGenreList]=useState([])
+    var getGenres = ()=>{
+        fetch('http://localhost:5042/api/Genre',{
+            method:'GET',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            }
+        }).then(
+            async (data)=>{
+                var myData = await data.json();
+                await console.log(myData);
+                await setGenreList(myData);
+            }
+        ).catch((e)=>{
+            console.log(e)
+        })
+    }
+    var checkGenres = genreList.length>0?true:false;
+return(
+    <div>
+        <h1 className="alert alert-success">Genres</h1>
+        <button className="btn btn-success" onClick={getGenres}>Get All Genres</button>
+        <hr/>
+        {checkGenres? 
+            <div >
+                {genreList.map((genre)=>
+                    <div key={genre.id} className="alert alert-primary">
+                        Genre Name : {genre.genreName}
+                        
+            </div>)}
+            </div>
+            :
+            <div>No genres are available </div>
+            }
+    </div>
+);
+}
+
+export default Genres;
+------------------------------------------------
+Login.js
+
+import { useState } from "react";
+import './Register.css';
+import axios from "axios";
+
+function Login(){
+    
+    const [username,setUsername] = useState("");
+    const [password,setPassword] = useState("");
+    var [usernameError,setUsernameError]=useState("");
+    var[passwordError,setPasswordError]=useState("");
+    
+    var checkUSerData = ()=>{
+        if(username=='')
+        {
+            setUsernameError("Username cannot be empty");
+            return false;
+        }
+        return true
+
+        if(password=='')
+            setPasswordError("Password Cannot be empty");
+            return false;
+        return true
+
+        
+
+    }
+    const Login = (event)=>{
+        event.preventDefault();
+        var checkData = checkUSerData();
+        if(checkData==false)
+        {
+            alert('please check your data')
+            return;
+        }
+        axios.post("http://localhost:5042/api/User/Login",{
+            username:username,
+            password:password
+    })
+        .then((userData)=>{
+            console.log(userData)
+           alert('User Login Successfully')
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+    
+    return(
+        
+        <form className="registerForm">
+            <label className="form-control">Username</label>
+            <input type="text" className="form-control" value={username}
+                    onChange={(e)=>{setUsername(e.target.value)}}/> <br/>
+            <label className="alert alert-danger">{usernameError}</label> <br/>
+        
+            <label className="form-control">Password</label>
+            <input type="password" className="form-control" value={password}
+                    onChange={(e)=>{setPassword(e.target.value)}}/>
+            <label className="alert alert-danger">{passwordError}</label>
+            <br/>
+            <button className="btn btn-primary button" onClick={Login}>Login</button>
+            
+            <button className="btn btn-danger button">Cancel</button>
+        </form>
+    );
+}
+
+export default Login;
+----------------------------------------------------------
+Movie.css
+
+.movie{
+    background-color: lightgreen;
+    border: green 2px solid;
+    width: 200px;
+    height: 100px;
+    color: green;
+}
+
+---------------------------------------------------------------
+Movie.js
+
+import { useState } from "react";
+
+function Movies(){
+    const [movieList,setMovieList]=useState([])
+    var getMovies = ()=>{
+        fetch('http://localhost:5042/api/Movie',{
+            method:'GET',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            }
+        }).then(
+            async (data)=>{
+                var myData = await data.json();
+                await console.log(myData);
+                await setMovieList(myData);
+            }
+        ).catch((e)=>{
+            console.log(e)
+        })
+    }
+    var checkMovies = movieList.length>0?true:false;
+return(
+    <div>
+        <h1 className="alert alert-success">Movies</h1>
+        <button className="btn btn-success" onClick={getMovies}>Get All Movies</button>
+        <hr/>
+        {checkMovies? 
+            <div >
+                {movieList.map((movie)=>
+                    <div key={movie.id} className="alert alert-primary">
+                        Movie Name : {movie.movieName}
+                        <br/>
+                        Disc Number : {movie.discNumber}
+                        <br/>
+                        Movie Image: {movie.image}
+                        <br/>
+                        Movie Description:{movie.movieDescription}
+                        <br/>
+                        Movie Duration:{movie.movieDuration}
+                        <br/>
+                        Movie Rating:{movie.movieRating}
+                        <br/>
+                        Movie Rental Cost:{movie.movieRentalCost}
+            </div>)}
+            </div>
+            :
+            <div>No movies are available </div>
+            }
+    </div>
+);
+}
+
+export default Movies;
+------------------------------------------------------------
+Payments.js
+
+import { useState } from "react";
+
+function Payments(){
+    const [paymentList,setPaymentList]=useState([])
+    var getPayments = ()=>{
+        fetch('http://localhost:5042/api/Payments',{
+            method:'GET',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            }
+        }).then(
+            async (data)=>{
+                var myData = await data.json();
+                await console.log(myData);
+                await setPaymentList(myData);
+            }
+        ).catch((e)=>{
+            console.log(e)
+        })
+    }
+    var checkPayments = paymentList.length>0?true:false;
+return(
+    <div>
+        <h1 className="alert alert-success">Payments</h1>
+        <button className="btn btn-success" onClick={getPayments}>Get All Payments</button>
+        <hr/>
+        {checkPayments? 
+            <div >
+                {paymentList.map((payment)=>
+                    <div key={payment.id} className="alert alert-primary">
+                        Payment Date : {payment.paymentDate}
+                        <br/>
+                        Card Number : {payment.cardNumber}
+                        <br/>
+                        Rental Id: {payment.rentalId}
+                        
+            </div>)}
+            </div>
+            :
+            <div>No payments are made </div>
+            }
+    </div>
+);
+}
+
+export default Payments;
+------------------------------------------
+/* RegisterUser.css */
+
+.registerForm {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(35, 2, 221, 0.1);
+    background-image: url("https://webgradients.com/public/webgradients_png/087%20Alchemist%20Lab.png");
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+
+.form-control label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-control input,
+.form-control select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-select {
+    margin-bottom: 15px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 10px;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.btn-primary:hover,
+.btn-danger:hover {
+    opacity: 0.9;
+}
+
+/* Responsive Styles */
+
+@media screen and (max-width: 600px) {
+    .registerForm {
+        max-width: 100%;
+    }
+
+    .form-control {
+        width: 100%;
+    }
+}
+
+.heading {
+    color: linear-gradient(to left,blue,green);
+    font-size: larger;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+-----------------------------------------------------
+Register.js
+
+import axios from "axios";
+import { useState } from "react";
+import './Register.css';
+
+function Register() {
+    const roles = ["User", "Admin"];
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [repassword, setrePassword] = useState("");
+    const [role, setRole] = useState("");
+    const [email, setEmail] = useState("");
+    const [phone, setPhone] = useState("");
+
+    var [usernameError, setUsernameError] = useState("");
+    var checkUSerData = () => {
+        if (username == '') {
+            setUsernameError("Username cannot be empty");
+            return false;
+        }
+
+        if (password == '')
+            return false;
+        if (role == 'Select Role')
+            return false;
+        return true;
+    }
+    const signUp = (event) => {
+        event.preventDefault();
+        var checkData = checkUSerData();
+        if (checkData == false) {
+            alert('please check your data')
+            return;
+        }
+
+        axios.post("http://localhost:5042/api/User/Register", {
+            username: username,
+            role: role,
+            password: password,
+            email: email,
+            phone: phone
+        })
+            .then((userData) => {
+                console.log(userData)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
+    return (
+        <form className="registerForm">
+            <label className="form-control">Username</label>
+            <input type="text" className="form-control" value={username}
+                onChange={(e) => { setUsername(e.target.value) } } /> <br />
+            <label className="alert alert-danger">{usernameError}</label> <br />
+            <label className="form-control">Password</label>
+            <input type="password" className="form-control" value={password}
+                onChange={(e) => { setPassword(e.target.value) }} /> <br />
+            <label className="form-control">Re-Type Password</label>
+            <input type="text" className="form-control" value={repassword}
+                onChange={(e) => { setrePassword(e.target.value) }} /> <br />
+            <label className="form-control">Email</label>
+            <input type="text" className="form-control" value={email}
+                onChange={(e) => { setEmail(e.target.value) }} /> <br />
+            <label className="form-control">Phone</label>
+            <input type="text" className="form-control" value={phone}
+                onChange={(e) => { setPhone(e.target.value) }} /> <br />
+
+            <label className="form-control">Role</label>
+            <select className="form-select" onChange={(e) => { setRole(e.target.value) }}>
+                <option value="select">Select Role</option>
+                {roles.map((r) =>
+                    <option value={r} key={r}>{r}</option>
+                )}
+            </select>
+            <br />
+            <button className="btn btn-primary button" onClick={signUp}>Sign Up</button>
+
+            <button className="btn btn-danger button">Cancel</button>
+        </form>
+    );
+};
+export default Register;
+---------------------------------------------------------
+Rentals.js
+
+import { useState } from "react";
+
+function Rentals(){
+    const [rentalList,setRentalList]=useState([])
+    var getRentals = ()=>{
+        fetch('http://localhost:5042/api/Movie',{
+            method:'GET',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json'
+            }
+        }).then(
+            async (data)=>{
+                var myData = await data.json();
+                await console.log(myData);
+                await setRentalList(myData);
+            }
+        ).catch((e)=>{
+            console.log(e)
+        })
+    }
+    var checkRentals = rentalList.length>0?true:false;
+return(
+    <div>
+        <h1 className="alert alert-success">Rentals</h1>
+        <button className="btn btn-success" onClick={getRentals}>Get All Rentals</button>
+        <hr/>
+        {checkRentals? 
+            <div >
+                {rentalList.map((rental)=>
+                    <div key={rental.id} className="alert alert-primary">
+                        Rental date : {rental.rentalDate}
+                        <br/>
+                        Rental Cost : {rental.rentalCost}
+                        <br/>
+                        Movie Id: {rental.movieId}
+                        <br/>
+                        
+            </div>)}
+            </div>
+            :
+            <div>No rentals are available </div>
+            }
+    </div>
+);
+}
+
+export default Rentals;
+---------------------------------
+App.js
+
+
+import logo from './logo.svg';
+import './App.css';
+import Register from './components/Register';
+import Login from './components/Login';
+import AddMovie from './components/AddMovie';
+import Movies from './components/Movies';
+import AddRental from './components/AddRental';
+import Rentals from './components/Rentals';
+import AddGenre from './components/AddGenre';
+import Genres from './components/Genres';
+import AddPayment from './components/AddPayment';
+import Payments from './components/Payments';
+
+function App() {
+  return (
+    <div className="App">
+      <Register/>
+      <Login/> 
+      <AddGenre/>
+      <Genres/> 
+      <AddMovie/>
+      <Movies/> 
+      <AddRental/>
+      <Rentals/>
+      <AddPayment/>
+      <Payments/>
+
+    </div>
+  );
+}
+
+export default App;
