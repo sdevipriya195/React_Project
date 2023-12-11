@@ -45,3 +45,14 @@ button {
 button:hover {
   background-color: #218838;
 }
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+  .container {
+    max-width: 100%;
+  }
+
+  input {
+    margin-bottom: 8px;
+  }
+}

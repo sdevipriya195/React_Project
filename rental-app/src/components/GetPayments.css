@@ -2,64 +2,68 @@
 
 /* Styles for the Paper component */
 .Paper {
-    padding: 20px;
-    max-width: 800px;
-    margin: auto;
-    background-color: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 800px;
+  margin: auto;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for the heading */
+h2 {
+  color: #333;
+}
+
+/* Styles for the Button component */
+.Button {
+  margin-top: 20px;
+}
+
+/* Styles for the CircularProgress component */
+.CircularProgress {
+  margin: 20px;
+}
+
+/* Styles for the error message */
+.Error {
+  color: red;
+}
+
+/* Styles for the TableContainer component */
+.TableContainer {
+  margin-top: 20px;
+}
+
+/* Styles for the Table component */
+.Table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+/* Styles for the TableHead component */
+.TableHead {
+  background-color: #007bff;
+  color: white;
+}
+
+/* Styles for the TableRow component */
+.TableRow {
+  &:nth-child(even) {
+    background-color: #f2f2f2;
   }
-  
-  /* Styles for the heading */
-  h2 {
-    color: #333;
+}
+
+/* Styles for the TableCell component */
+.TableCell {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+  .Paper {
+    max-width: 100%;
   }
-  
-  /* Styles for the Button component */
-  .Button {
-    margin-top: 20px;
-  }
-  
-  /* Styles for the CircularProgress component */
-  .CircularProgress {
-    margin: 20px;
-  }
-  
-  /* Styles for the error message */
-  .Error {
-    color: red;
-  }
-  
-  /* Styles for the TableContainer component */
-  .TableContainer {
-    margin-top: 20px;
-  }
-  
-  /* Styles for the Table component */
-  .Table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  
-  /* Styles for the TableHead component */
-  .TableHead {
-    background-color: #007bff;
-    color: white;
-  }
-  
-  /* Styles for the TableRow component */
-  .TableRow {
-    &:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-  }
-  
-  /* Styles for the TableCell component */
-  .TableCell {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  /* Add additional styles as needed */
-  
+}

@@ -98,7 +98,7 @@ function Movies() {
           ))}
         </div>
       ) : (
-        <h6>No Movies</h6>
+        <p>Loading...</p>
       )}
       {isAddMovieOpen && <AddMovie />}
     </Container>

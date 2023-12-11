@@ -19,13 +19,21 @@ namespace VideoRentalApp.Repositories
             _context.Rentals.Add(rental);
             _context.SaveChanges();
             int newcount = _context.Rentals.Count();
-            if (newcount > count)
+            try
             {
-                return "Rental inserted successfully";
+                if (newcount > count)
+                {
+                    return "Rental inserted successfully";
+                }
+                else
+                {
+                    return "oops something went wrong while inserting";
+                }
             }
-            else
+            catch (Exception)
             {
-                return "oops something went wrong while inserting";
+
+                throw;
             }
         }
 

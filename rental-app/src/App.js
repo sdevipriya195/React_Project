@@ -6,7 +6,6 @@ import Menu from "./components/Menu";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import AddMovie from "./components/AddMovie";
 import Movies from "./components/Movies";
-import AddRental from "./components/AddRental";
 import Rentals from "./components/Rentals";
 import AddPayment from "./components/AddPayment";
 import GetPayments from "./components/GetPayments";

@@ -8,7 +8,6 @@
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(35, 2, 221, 0.1);
     margin-top: 4%;
-
 }
 
 .form-control {
@@ -59,7 +58,8 @@
         max-width: 100%;
     }
 
-    .form-control {
+    .form-control input,
+    .form-control select {
         width: 100%;
     }
 }

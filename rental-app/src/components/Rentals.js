@@ -3,9 +3,9 @@ import { useState } from "react";
 import './Rental.css';
 
 function Rentals({ movie, popup }) {
-  const [id, setId] = useState(movie?.movieId || ''); // Use optional chaining to handle undefined movie prop
+  const [id, setId] = useState(movie?.movieId || ''); 
   const [date, setDate] = useState("");
-  const [cost, setCost] = useState(movie?.movieRentalCost || ''); // Use optional chaining to handle undefined movie prop
+  const [cost, setCost] = useState(movie?.movieRentalCost || ''); 
 
   const rent = (event) => {
     event.preventDefault();
@@ -19,7 +19,7 @@ function Rentals({ movie, popup }) {
       movieId: id
     })
       .then((response) => {
-        alert("Added to your rentals with rental id:{id");
+        alert("Added to your rentals..Please check once ");
         console.log(response.data);
         popup();
       })
@@ -31,7 +31,7 @@ function Rentals({ movie, popup }) {
 
   return (
     <>
-{/* <div style={{ marginBottom: '20%' }}> */}
+
     <div className="center card">
       <form>
         <input id="pcheckOut" required type="date" className="form-control input" placeholder="Check-Out" value={date} onChange={(e) => { setDate(e.target.value) }} />
@@ -39,7 +39,6 @@ function Rentals({ movie, popup }) {
         <button type="button" className="btn btn-success" onClick={rent}>Rent It</button>
       </form>
     </div>
-    {/* </div> */}
     </>
   )
 }

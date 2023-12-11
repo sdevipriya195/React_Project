@@ -34,8 +34,7 @@ namespace VideoRentalApp.Controllers
         /// <returns></returns>
 
         [HttpGet]
-        // [Authorize(Roles = "Admin")]
-        [HttpGet]
+       // [Authorize]
         public ActionResult Get(string search, string genre)
         {
             List<Movie> movies = new List<Movie>();
@@ -65,7 +64,7 @@ namespace VideoRentalApp.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-       // [Authorize(Roles = "Admin")]
+        //[Authorize]
 
         public ActionResult<Movie> Get(int id)
         {
@@ -109,10 +108,11 @@ namespace VideoRentalApp.Controllers
         /// <param name="movies"></param>
         /// <returns></returns>
         [HttpPut]
-        [Authorize]
+       // [Authorize]
 
         public string Put(Movie movies)
         {
+            string errorMessage = string.Empty;
             try
             {
                 string Response = _movieRepository.UpdateMovie(movies);
@@ -135,7 +135,7 @@ namespace VideoRentalApp.Controllers
 
         [Route("{id:int}")]
         [HttpDelete]
-       // [Authorize(Roles = "Admin")]
+      //  [Authorize]
 
         public string Delete(int id)
         {

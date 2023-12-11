@@ -1,6 +1,8 @@
 import axios from "axios";
 import { useState } from "react";
 import './Register.css';
+import emailjs from 'emailjs-com';
+emailjs.init("zTEAHMgHYrzmkeDfp");
 
 function Register() {
     const roles = ["User", "Admin"];
@@ -24,14 +26,32 @@ function Register() {
             return false;
         return true;
     }
+    const sendEmail = () => {
+        const templateParams = {
+          to_name: username,
+          from_name: 'MovieRentalApplication',
+          message: 'Thank you for registering',
+          to_email: email,
+        };
+    
+        emailjs.send('service_fvumffi', 'template_svjn8nd', templateParams, 'zTEAHMgHYrzmkeDfp')
+          .then((response) => {
+            console.log('Email sent successfully:', response);
+          })
+          .catch((error) => {
+            console.error('Error sending email:', error);
+          });
+    };
+    
+
     const signUp = (event) => {
         event.preventDefault();
         var checkData = checkUSerData();
         if (checkData == false) {
-            alert('please check your data')
+            alert('please check your data');
             return;
         }
-
+    
         axios.post("http://localhost:5042/api/User", {
             username: username,
             role: role,
@@ -39,14 +59,16 @@ function Register() {
             email: email,
             phone: phone
         })
-            .then((userData) => {
-                console.log(userData)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }
-
+        .then((userData) => {
+            console.log(userData);
+            // Move sendEmail inside the then block
+            sendEmail();
+        })
+        .catch((err) => {
+            console.log(err);
+        });
+    };
+    
     return (
         <form className="registerForm">
             <label className="form-control">Username</label>
@@ -57,7 +79,7 @@ function Register() {
             <input type="password" className="form-control" value={password}
                 onChange={(e) => { setPassword(e.target.value) }} /> <br />
             <label className="form-control">Re-Type Password</label>
-            <input type="text" className="form-control" value={repassword}
+            <input type="password" className="form-control" value={repassword}
                 onChange={(e) => { setrePassword(e.target.value) }} /> <br />
             <label className="form-control">Email</label>
             <input type="text" className="form-control" value={email}
@@ -82,4 +104,5 @@ function Register() {
         </form>
     );
 };
+
 export default Register;

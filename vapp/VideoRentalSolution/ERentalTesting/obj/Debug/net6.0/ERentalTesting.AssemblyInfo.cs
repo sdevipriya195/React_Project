@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ERentalTesting")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57af477d74ca7c44d01832432e1122c4ed57c0ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d89497afe90834c418550347d4e8c01cd7cd1b6f")]
 [assembly: System.Reflection.AssemblyProductAttribute("ERentalTesting")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ERentalTesting")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

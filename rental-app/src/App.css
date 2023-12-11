@@ -4,7 +4,7 @@
 }
 
 body{
-  /* background-image: url('../public/images/pic.jpeg'); */
+  background-image: url('../public/images/img.jpg'); 
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
