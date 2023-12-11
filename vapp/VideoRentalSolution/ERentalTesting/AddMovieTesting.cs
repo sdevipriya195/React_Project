@@ -18,7 +18,7 @@ namespace ERentalTesting
         public void Setup()
         {
             var dbOptions = new DbContextOptionsBuilder<MovieContext>()
-                .UseInMemoryDatabase("dbTestMovies") // In-memory database for testing
+                .UseInMemoryDatabase("dbTestAddMovies") // In-memory database for testing
                 .Options;
 
             _context = new MovieContext(dbOptions);

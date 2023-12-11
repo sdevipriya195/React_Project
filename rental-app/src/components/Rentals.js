@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import './Rental.css';
 
-function Rentals({ movie }) {
+function Rentals({ movie, popup }) {
   const [id, setId] = useState(movie?.movieId || ''); // Use optional chaining to handle undefined movie prop
   const [date, setDate] = useState("");
   const [cost, setCost] = useState(movie?.movieRentalCost || ''); // Use optional chaining to handle undefined movie prop
@@ -19,8 +19,9 @@ function Rentals({ movie }) {
       movieId: id
     })
       .then((response) => {
-        alert("Added to your rentals");
+        alert("Added to your rentals with rental id:{id");
         console.log(response.data);
+        popup();
       })
       .catch((err) => {
         console.error(err);

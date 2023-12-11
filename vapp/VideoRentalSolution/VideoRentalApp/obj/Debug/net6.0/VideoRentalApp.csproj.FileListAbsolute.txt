@@ -840,3 +840,4 @@ F:\dotnet\traininggiit\aproject\vapp\VideoRentalSolution\VideoRentalApp\obj\Debu
 F:\dotnet\traininggiit\aproject\vapp\VideoRentalSolution\VideoRentalApp\obj\Debug\net6.0\VideoRentalApp.pdb
 F:\dotnet\traininggiit\aproject\vapp\VideoRentalSolution\VideoRentalApp\obj\Debug\net6.0\VideoRentalApp.genruntimeconfig.cache
 F:\dotnet\traininggiit\aproject\vapp\VideoRentalSolution\VideoRentalApp\obj\Debug\net6.0\ref\VideoRentalApp.dll
+F:\dotnet\traininggiit\aproject\vapp\VideoRentalSolution\VideoRentalApp\obj\Debug\net6.0\VideoRentalApp.sourcelink.json

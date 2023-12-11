@@ -1,12 +1,23 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Button, CircularProgress, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import './GetPayments.css';
 
 const GetPayments = () => {
   // State variables
   const [paymentData, setPaymentData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const role=localStorage.getItem("role");
+  const navigate=useNavigate();
+  if (role!=="Admin"){
+    alert("no access");
+    setTimeout(()=>{
+      navigate("/Register");
+    },0);
+    return null;
+  }
 
   // Function to fetch payment details
   const fetchPaymentDetails = async () => {
@@ -15,7 +26,13 @@ const GetPayments = () => {
       setError(null);
 
       // API request to get payment details
-      const response = await axios.get('http://localhost:5042/api/Payment');
+      const response = await axios.get('http://localhost:5042/api/Payment',{
+        headers: {
+          'Accept':'application/json',
+          'Content-TYpe':'application/json',
+          Authorization: "Bearer " + localStorage.getItem("token")
+        },
+      })
       console.log('Response:', response.data);
 
       // Check if the response has a 'data' property

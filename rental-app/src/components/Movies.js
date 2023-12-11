@@ -32,7 +32,10 @@ function Movies() {
   };
 
   const rent = () => {
-    setLoginOpen(!isLoginOpen);
+    setLoginOpen(true);
+  };
+  const POP = () => {
+    setLoginOpen(false);
   };
 
   const toggleAddMovie = () => {
@@ -44,7 +47,7 @@ function Movies() {
   return (
     <Container className="center">
       <div className="search-container">
-        <TextField
+        <TextField class="left-search "
           type="text"
           placeholder="Search by movie name"
           value={movieName}
@@ -87,8 +90,8 @@ function Movies() {
              
               <CardActions>
                 <button className="btn-rent" onClick={rent}>Rent It</button>
-                <Popup open={isLoginOpen} closeOnDocumentClick onClose={rent} modal nested>
-                  <Rentals movie={movie} />
+                <Popup open={isLoginOpen} closeOnDocumentClick onClose={() => setLoginOpen(false)} modal nested>
+                  <Rentals movie={movie} popup={POP}/>
                 </Popup>
               </CardActions>
             </Card>

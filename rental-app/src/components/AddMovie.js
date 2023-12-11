@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState} from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 
 function AddMovie(){
     const[genreName,setGenreName]=useState("");
@@ -10,6 +12,15 @@ function AddMovie(){
     const[movieDuration,setMovieDuration] = useState();
     const[movieRating,setMovieRating] = useState();
     const[movieRentalCost,setMovieRentalCost] = useState();
+    const role=localStorage.getItem("role");
+    const navigate=useNavigate();
+  if (role!=="Admin"){
+    alert("no access");
+    setTimeout(()=>{
+      navigate("/Register");
+    },0);
+    return null;
+  }
 
     const Add=(event)=>{
         event.preventDefault();
@@ -22,7 +33,13 @@ function AddMovie(){
             movieDuration:movieDuration,
             movieRating:movieRating,
             movieRentalCost:movieRentalCost
-        })
+        },
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        }
+        )
         .then((response)=>{
             console.log(response.data);
             alert(response.data);

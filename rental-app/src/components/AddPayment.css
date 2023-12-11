@@ -1,58 +1,47 @@
-/* AddPayments.css */
+/* AddPayment.css */
 
 .container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa;
+}
+
+h2 {
+  color: #007bff;
 }
 
 .form-wrapper {
-  max-width: 600px;
-  width: 100%;
-  padding: 20px;
-  background:transparent;
-  
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.heading{
-  text-align: center;
-  color: #333;
-  margin: 0px;
-}
-
-form {
   display: flex;
   flex-direction: column;
 }
-label {
-  font-weight: bold;
-  margin-bottom: 5px;
+
+.heading {
+  margin-bottom: 6px;
   color: #333;
 }
 
 input {
-  padding: 10px;
   width: 100%;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
+  padding: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #ced4da;
   border-radius: 4px;
-  font-size: 14px;
 }
 
 button {
-  background-color: #2a48df;
+  background-color: #1236d4;
   color: white;
-  padding: 12px;
   border: none;
-  border-radius: 10px;
+  padding: 10px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-  background-color:blue;
+  background-color: #218838;
 }

@@ -356,3 +356,4 @@ F:\dotnet\traininggiit\aproject\vapp\VideoRentalSolution\ERentalTesting\obj\Debu
 F:\dotnet\traininggiit\aproject\vapp\VideoRentalSolution\ERentalTesting\obj\Debug\net6.0\ERentalTesting.pdb
 F:\dotnet\traininggiit\aproject\vapp\VideoRentalSolution\ERentalTesting\obj\Debug\net6.0\ERentalTesting.genruntimeconfig.cache
 F:\dotnet\traininggiit\aproject\vapp\VideoRentalSolution\ERentalTesting\obj\Debug\net6.0\ref\ERentalTesting.dll
+F:\dotnet\traininggiit\aproject\vapp\VideoRentalSolution\ERentalTesting\obj\Debug\net6.0\ERentalTesting.sourcelink.json

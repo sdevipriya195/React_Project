@@ -50,16 +50,26 @@ const Login = () => {
       return;
     }
 
+
     axios
       .post("http://localhost:5042/api/User/Login", credentials)
       .then((response) => {
-        console.log(response.data);
-        alert("User Login Successfully");
+        console.log(response);
+        const userData = response.data;
+        const username = userData.data;
+        localStorage.setItem('username', username);
+        const role = userData.role;
+        localStorage.setItem('role', role);
+        const token = userData.token;
+        localStorage.setItem("token", token);
+        alert("Login successful");
+        window.location.reload();
       })
       .catch((error) => {
         console.error(error);
         alert("Failed to login");
       });
+
   };
 
   return (

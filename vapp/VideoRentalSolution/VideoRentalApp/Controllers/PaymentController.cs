@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,8 @@ namespace VideoRentalApp.Controllers
 
         // GET: api/Payment
         [HttpGet]
+        [Authorize(Roles = "Admin")]
+
         public async Task<ActionResult<IEnumerable<Payment>>> GetPayments()
         {
           if (_context.Payments == null)

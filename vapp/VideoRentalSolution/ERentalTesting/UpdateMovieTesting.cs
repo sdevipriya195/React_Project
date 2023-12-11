@@ -17,7 +17,7 @@ namespace ERentalTesting
         {
             // Set up the in-memory database for testing
             _options = new DbContextOptionsBuilder<MovieContext>()
-                .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
+                .UseInMemoryDatabase("dbUpdateMovie")
                 .Options;
 
             using (var context = new MovieContext(_options))
@@ -26,6 +26,11 @@ namespace ERentalTesting
                 context.movies.Add(new Movie
                 {
                     MovieId = 1,
+                    GenreName = "Drama",
+                    DiscNumber = 123,
+                    Image = "test-image.jpg",
+                    MovieDescription = "This is a test movie",
+                    MovieDuration = 120,
                     MovieName = "TestMovie",
                     MovieRating = 3.5,
                     MovieRentalCost = 5
@@ -50,7 +55,10 @@ namespace ERentalTesting
                 {
                     MovieId = movieToUpdate.MovieId,
                     MovieRating = newRating,
-                    MovieRentalCost = newRentalCost
+                    MovieRentalCost = newRentalCost,
+                    GenreName = "Drama",
+                    Image = "test-image.jpg",
+                    MovieDescription = "This is a test movie"
                     // Add other properties as needed for testing
                 };
                 var result = repository.UpdateMovie(updatedMovie);
@@ -77,8 +85,7 @@ namespace ERentalTesting
                 {
                     MovieId = movieId,
                     MovieRating = newRating,
-                    MovieRentalCost = newRentalCost
-                    // Add other properties as needed for testing
+                    MovieRentalCost = newRentalCost,
                 });
 
                 // Assert

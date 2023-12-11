@@ -29,9 +29,8 @@ namespace ERentalTesting
         }
 
         [Test]
-        [TestCase("Test", "Test@", "test123")]
-        //[TestCase("Test", "Test@", "test321")]
-        public void LoginTest(string un, string pass, string em)
+        [TestCase("Test", "Test@", "test123","123")]
+        public void LoginTest(string un, string pass, string em,string en)
         {
 
             //Arrange
@@ -45,13 +44,11 @@ namespace ERentalTesting
                 Username = un,
                 Password = pass,
                 Email = em,
-                Role = "Admin"
+                Role = "Admin",
+                Phone=en
             });
             //Action
-            var result = userService.Login(new UserDTO { Username = "Test", Email = "Test@", Password = "test123", Role = "Admin" });
-            // Assert.AreEqual("Test", result.Username);
-            //Assert.AreEqual("Test@", result.Email);
-
+            var result = userService.Login(new UserDTO { Username = "Test", Email = "Test@", Password = "test123", Role = "Admin",Phone = en });
         }
     }
 

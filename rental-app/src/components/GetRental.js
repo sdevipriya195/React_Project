@@ -1,4 +1,6 @@
 import { useState } from "react";
+import axios from "axios";
+import './GetRental.css';
 
 function GetRental(){
     const [rentalList,setRentalList]=useState([])
@@ -14,11 +16,14 @@ function GetRental(){
                 var myData = await data.json();
                 await console.log(myData);
                 await setRentalList(myData);
+               // const rentalId=localStorage.setItem("rentalId");
+
             }
         ).catch((e)=>{
             console.log(e)
         })
     }
+   
     var checkRentals = rentalList.length>0?true:false;
 return(
     <div>
@@ -28,7 +33,10 @@ return(
         {checkRentals? 
             <div >
                 {rentalList.map((rental)=>
-                    <div key={rental.id} className="alert alert-primary">
+                    <div key={rental.rentalId} className="alert alert-primary">
+                        
+                        Rental ID : {rental.rentalId}
+                        <br/>
                         Rental date : {rental.rentalDate}
                         <br/>
                         Rental Cost : {rental.rentalCost}

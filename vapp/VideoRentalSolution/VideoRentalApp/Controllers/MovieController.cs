@@ -86,7 +86,7 @@ namespace VideoRentalApp.Controllers
         /// <returns></returns>
 
         [HttpPost]
-      //  [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Admin")]
 
         public string Post(Movie movies)
         {
@@ -109,7 +109,7 @@ namespace VideoRentalApp.Controllers
         /// <param name="movies"></param>
         /// <returns></returns>
         [HttpPut]
-        //[Authorize(Roles = "Admin")]
+        [Authorize]
 
         public string Put(Movie movies)
         {

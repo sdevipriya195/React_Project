@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import './Movie.css';
+import './Menu.css';
 
 function Menu(){
     return (
@@ -19,9 +19,9 @@ function Menu(){
       <li className="nav-item">
         <Link className="nav-link" to="/GetRental" >GetRental</Link>
       </li>
-      <li className="nav-item">
+      {/* <li className="nav-item">
         <Link className="nav-link" to="/Rentals" >Rentals</Link>
-      </li>
+      </li> */}
       <li className="nav-item">
         <Link className="nav-link" to="/AddPayment" >AddPayment</Link>
       </li>

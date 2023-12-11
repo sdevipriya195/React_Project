@@ -32,11 +32,11 @@ const AddPayment = () => {
   };
 
   return (
-    <div>
+    <div class="container">
       <h2>Add Payment</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} class="form-wrapper">
         <div>
-          <label htmlFor="RentalId">Rental ID:</label>
+          <label class="heading" htmlFor="RentalId">Rental ID:</label>
           <input
             type="number"
             id="RentalId"
@@ -47,7 +47,7 @@ const AddPayment = () => {
         </div>
 
         <div>
-          <label htmlFor="CardNumber">Card Number:</label>
+          <label class="heading" htmlFor="CardNumber">Card Number:</label>
           <input
             type="text"
             id="CardNumber"
@@ -58,7 +58,7 @@ const AddPayment = () => {
         </div>
 
         <div>
-          <label htmlFor="ExpiryDate">Expiry Date:</label>
+          <label class="heading" htmlFor="ExpiryDate">Expiry Date:</label>
           <input
             type="text"
             id="ExpiryDate"
@@ -69,7 +69,7 @@ const AddPayment = () => {
         </div>
 
         <div>
-          <label htmlFor="CVV">CVV:</label>
+          <label class="heading" htmlFor="CVV">CVV:</label>
           <input
             type="text"
             id="CVV"
@@ -80,7 +80,7 @@ const AddPayment = () => {
         </div>
 
         <div>
-          <label htmlFor="PaymentAmount">Payment Amount:</label>
+          <label class="heading" htmlFor="PaymentAmount">Payment Amount:</label>
           <input
             type="number"
             id="PaymentAmount"
@@ -91,7 +91,7 @@ const AddPayment = () => {
         </div>
 
         <div>
-          <label htmlFor="PaymentDate">Payment Date:</label>
+          <label class="heading" htmlFor="PaymentDate">Payment Date:</label>
           <input
             type="date"
             id="PaymentDate"

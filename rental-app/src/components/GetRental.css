@@ -1,0 +1,39 @@
+/* GetRental.css */
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
+  
+  .btn-success {
+    color: #fff;
+    background-color: #2849df;
+    border-color: #2849df;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+  }
+  
+  .alert-primary {
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+  }
+  
+  /* Add additional styles as needed */
+  
