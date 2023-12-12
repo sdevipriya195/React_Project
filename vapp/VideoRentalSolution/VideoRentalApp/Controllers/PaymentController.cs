@@ -40,7 +40,6 @@ namespace VideoRentalApp.Controllers
 
         // GET: api/Payment/5
         [HttpGet("{id}")]
-       // [Authorize]
         public async Task<ActionResult<Payment>> GetPayment(int id)
         {
           if (_context.Payments == null)
@@ -58,9 +57,7 @@ namespace VideoRentalApp.Controllers
         }
 
         // PUT: api/Payment/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-       // [Authorize]
         public async Task<IActionResult> PutPayment(int id, Payment payment)
         {
             if (id != payment.PaymentId)
@@ -90,9 +87,7 @@ namespace VideoRentalApp.Controllers
         }
 
         // POST: api/Payment
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        //[Authorize]
         public async Task<ActionResult<Payment>> PostPayment(Payment payment)
         {
           if (_context.Payments == null)
@@ -107,7 +102,6 @@ namespace VideoRentalApp.Controllers
 
         // DELETE: api/Payment/5
         [HttpDelete("{id}")]
-       // [Authorize]
         public async Task<IActionResult> DeletePayment(int id)
         {
             if (_context.Payments == null)

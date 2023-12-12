@@ -16,7 +16,7 @@ function Logout() {
     style={{ backgroundColor: '#f0f0f0', padding: '200px' }}
    
     >
-      <h5 style={{fontSize:'90px',color:'Green',marginTop:'10px', align: 'center',fontFamily:'cursive'}}>We hope you enjoy this App..</h5>
+      <h6 style={{fontSize:'90px',color:'Green',marginTop:'10px', align: 'center',fontFamily:'cursive'}}>We hope you enjoy this App..</h6>
       <br></br>
       <a style={{position: 'absolute',transform: 'translate(-50%, -50%)',top: '85%',left: '48%',}}href="/Register" onClick={handleLogout} className="Logout">
       

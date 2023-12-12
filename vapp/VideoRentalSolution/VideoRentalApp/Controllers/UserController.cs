@@ -24,7 +24,6 @@ namespace VideoRentalApp.Controllers
 
         }
         [HttpPost]
-        //[AllowAnonymous]
         public ActionResult Register(UserDTO viewModel)
         {
             string message = "";
@@ -50,7 +49,6 @@ namespace VideoRentalApp.Controllers
         }
 
         [HttpPost]
-        //[AllowAnonymous]
         [Route("Login")]//attribute based routing
         public ActionResult Login(UserDTO userDTO)
         {

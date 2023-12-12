@@ -32,7 +32,6 @@ namespace VideoRentalApp.Controllers
         /// <returns></returns>
 
         [HttpGet]
-        //[Authorize]
         public ActionResult<List<Rental>> Get()
         {
             List<Rental> Rentals = _rentalRepository.GetAllRentals();
@@ -52,7 +51,6 @@ namespace VideoRentalApp.Controllers
         /// <returns></returns>
 
         [HttpGet("{id}")]
-       // [Authorize]
         public ActionResult<Rental> Get(int id)
         {
             Rental Rentals = _rentalRepository.GetRentalById(id);
@@ -72,7 +70,6 @@ namespace VideoRentalApp.Controllers
         /// <returns></returns>
 
         [HttpPost]
-       // [Authorize]
 
         public string Post(Rental Rentals)
         {
@@ -95,7 +92,6 @@ namespace VideoRentalApp.Controllers
         /// <param name="Rentals"></param>
         /// <returns></returns>
         [HttpPut]
-        //[Authorize]
 
         public string Put(Rental Rentals)
         {
@@ -120,7 +116,6 @@ namespace VideoRentalApp.Controllers
 
         [Route("{id:int}")]
         [HttpDelete]
-        //[Authorize]
 
         public string Delete(int id)
         {

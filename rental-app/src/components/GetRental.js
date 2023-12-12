@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import './GetRental.css';
 
 function GetRental() {
     const [rentalList, setRentalList] = useState([]);
+
+    useEffect(() => {
+        // Fetch rentals when the component mounts
+        getRentals();
+    }, []);
 
     const getRentals = () => {
         fetch('http://localhost:5042/api/Rental', {
@@ -39,7 +44,6 @@ function GetRental() {
     return (
         <div>
             <h1 className="alert alert-success">Rentals</h1>
-            <button className="btn btn-success" onClick={getRentals}>Get All Rentals</button>
             <hr />
             {checkRentals ? (
                 <div>

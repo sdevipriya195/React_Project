@@ -34,7 +34,6 @@ namespace VideoRentalApp.Controllers
         /// <returns></returns>
 
         [HttpGet]
-       // [Authorize]
         public ActionResult Get(string search, string genre)
         {
             List<Movie> movies = new List<Movie>();
@@ -64,7 +63,6 @@ namespace VideoRentalApp.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-        //[Authorize]
 
         public ActionResult<Movie> Get(int id)
         {
@@ -108,7 +106,6 @@ namespace VideoRentalApp.Controllers
         /// <param name="movies"></param>
         /// <returns></returns>
         [HttpPut]
-       // [Authorize]
 
         public string Put(Movie movies)
         {
@@ -135,7 +132,6 @@ namespace VideoRentalApp.Controllers
 
         [Route("{id:int}")]
         [HttpDelete]
-      //  [Authorize]
 
         public string Delete(int id)
         {
