@@ -15,7 +15,7 @@ function AddMovie(){
     const role=localStorage.getItem("role");
     const navigate=useNavigate();
   if (role!=="Admin"){
-    alert("Only Admin can access");
+    alert("Only Admin can access.Register as an admin");
     setTimeout(()=>{
       navigate("/");
     },0);

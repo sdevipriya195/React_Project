@@ -21,7 +21,6 @@ namespace VideoRentalApp.Controllers
         private readonly IMovieRepository _movieRepository = null;
         private readonly ILogger<MovieController> _logger;
 
-
         public MovieController(IMovieRepository movieRepository, ILogger<MovieController> logger)
         {
             _movieRepository = movieRepository;
@@ -36,26 +35,37 @@ namespace VideoRentalApp.Controllers
         [HttpGet]
         public ActionResult Get(string search, string genre)
         {
-            List<Movie> movies = new List<Movie>();
-            if (search == null)
+            try
             {
-                movies = _movieRepository.GetAllMovies(genre).ToList();
-            }
-            else { movies = _movieRepository.GetAllMovies(genre)
-                 .Where(c => c.MovieName.Contains(search, StringComparison.OrdinalIgnoreCase))
-                 .ToList();
-            }
-            
+                List<Movie> movies = new List<Movie>();
 
-            if (movies.Count > 0)
-            {
-                return Ok( movies);
+                if (search == null)
+                {
+                    movies = _movieRepository.GetAllMovies(genre).ToList();
+                }
+                else
+                {
+                    movies = _movieRepository.GetAllMovies(genre)
+                        .Where(c => c.MovieName.Contains(search, StringComparison.OrdinalIgnoreCase))
+                        .ToList();
+                }
+
+                if (movies.Count > 0)
+                {
+                    return Ok(movies);
+                }
+                else
+                {
+                    return BadRequest("No results");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest("No results");
+                _logger.LogError(ex, "Error while processing the request");
+                return StatusCode(500, "Internal Server Error");
             }
         }
+
 
         /// <summary>
         /// Get the movies by the ID
@@ -63,19 +73,28 @@ namespace VideoRentalApp.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("{id}")]
-
         public ActionResult<Movie> Get(int id)
         {
-            Movie movies = _movieRepository.GetMovieById(id);
-            if (movies != null)
+            try
             {
-                return movies;
+                Movie movie = _movieRepository.GetMovieById(id);
+
+                if (movie != null)
+                {
+                    return movie;
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return NotFound();
+                _logger.LogError(ex, "Error while getting movie by id");
+                return BadRequest("An error occurred while processing your request.");
             }
         }
+
         /// <summary>
         /// Add the movies 
         /// </summary>
@@ -118,7 +137,7 @@ namespace VideoRentalApp.Controllers
             catch (Exception ex)
             {
 
-                _logger.LogError("update failed");
+                _logger.LogError("Movie update failed");
 
                 return (ex.InnerException.Message);
 
@@ -143,7 +162,7 @@ namespace VideoRentalApp.Controllers
             catch (Exception ex)
             {
 
-                _logger.LogError("Delete failed");
+                _logger.LogError("Movie delete failed");
 
                 return (ex.InnerException.Message);
             }

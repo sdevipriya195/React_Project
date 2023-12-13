@@ -19,41 +19,60 @@ namespace VideoRentalApp.Controllers
     public class PaymentController : ControllerBase
     {
         private readonly MovieContext _context;
+        private readonly ILogger<MovieController> _logger;
 
-        public PaymentController(MovieContext context)
+        public PaymentController(MovieContext context, ILogger<MovieController> logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         // GET: api/Payment
         [HttpGet]
         [Authorize(Roles = "Admin")]
-
         public async Task<ActionResult<IEnumerable<Payment>>> GetPayments()
         {
-          if (_context.Payments == null)
-          {
-              return NotFound();
-          }
-            return await _context.Payments.ToListAsync();
+            try
+            {
+                if (_context.Payments == null)
+                {
+                    return NotFound();
+                }
+
+                return await _context.Payments.ToListAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while retrieving payments");
+                return StatusCode(500, "Internal Server Error");
+            }
         }
 
         // GET: api/Payment/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Payment>> GetPayment(int id)
         {
-          if (_context.Payments == null)
-          {
-              return NotFound();
-          }
-            var payment = await _context.Payments.FindAsync(id);
-
-            if (payment == null)
+            try
             {
-                return NotFound();
-            }
+                if (_context.Payments == null)
+                {
+                    return NotFound();
+                }
 
-            return payment;
+                var payment = await _context.Payments.FindAsync(id);
+
+                if (payment == null)
+                {
+                    return NotFound();
+                }
+
+                return payment;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while retrieving payment");
+                return StatusCode(500, "Internal Server Error");
+            }
         }
 
         // PUT: api/Payment/5
@@ -90,15 +109,25 @@ namespace VideoRentalApp.Controllers
         [HttpPost]
         public async Task<ActionResult<Payment>> PostPayment(Payment payment)
         {
-          if (_context.Payments == null)
-          {
-              return Problem("Entity set 'MovieContext.Payments'  is null.");
-          }
-            _context.Payments.Add(payment);
-            await _context.SaveChangesAsync();
+            try
+            {
+                if (_context.Payments == null)
+                {
+                    return Problem("Payments is null.");
+                }
 
-            return CreatedAtAction("GetPayment", new { id = payment.PaymentId }, payment);
+                _context.Payments.Add(payment);
+                await _context.SaveChangesAsync();
+
+                return CreatedAtAction("GetPayment", new { id = payment.PaymentId }, payment);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error while processing payment creation");
+                return StatusCode(500, "Internal Server Error");
+            }
         }
+
 
         // DELETE: api/Payment/5
         [HttpDelete("{id}")]

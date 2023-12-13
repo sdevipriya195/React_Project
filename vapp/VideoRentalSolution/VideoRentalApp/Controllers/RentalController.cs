@@ -34,16 +34,26 @@ namespace VideoRentalApp.Controllers
         [HttpGet]
         public ActionResult<List<Rental>> Get()
         {
-            List<Rental> Rentals = _rentalRepository.GetAllRentals();
-            if (Rentals.Count > 0)
+            try
             {
-                return Rentals;
+                List<Rental> Rentals = _rentalRepository.GetAllRentals();
+
+                if (Rentals.Count > 0)
+                {
+                    return Rentals;
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return NotFound();
+                _logger.LogError(ex, "Error while retrieving rentals");
+                return StatusCode(500, "Internal Server Error");
             }
         }
+
         /// <summary>
         /// Get the Rental details by ID
         /// </summary>
@@ -53,16 +63,26 @@ namespace VideoRentalApp.Controllers
         [HttpGet("{id}")]
         public ActionResult<Rental> Get(int id)
         {
-            Rental Rentals = _rentalRepository.GetRentalById(id);
-            if (Rentals != null)
+            try
             {
-                return Rentals;
+                Rental rental = _rentalRepository.GetRentalById(id);
+
+                if (rental != null)
+                {
+                    return rental;
+                }
+                else
+                {
+                    return NotFound();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return NotFound();
+                _logger.LogError(ex, "Error while retrieving rental by ID");
+                return StatusCode(500, "Internal Server Error");
             }
         }
+
         /// <summary>
         /// Add the rentals of the movie
         /// </summary>

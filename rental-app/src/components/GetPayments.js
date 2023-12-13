@@ -12,7 +12,7 @@ const GetPayments = () => {
   const role=localStorage.getItem("role");
   const navigate=useNavigate();
   if (role!=="Admin"){
-    alert("Only Admin can access");
+    alert("Only Admin can access.Register as an Admin..");
     setTimeout(()=>{
       navigate("/");
     },0);

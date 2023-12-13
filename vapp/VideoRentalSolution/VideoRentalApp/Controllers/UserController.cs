@@ -49,16 +49,26 @@ namespace VideoRentalApp.Controllers
         }
 
         [HttpPost]
-        [Route("Login")]//attribute based routing
+        [Route("Login")] // attribute based routing
         public ActionResult Login(UserDTO userDTO)
         {
-            var result = _userService.Login(userDTO);
-            if (result != null)
+            try
             {
-                return Ok(result);
+                var result = _userService.Login(userDTO);
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+
+                return Unauthorized("Invalid username or password");
             }
-            return Unauthorized("Invalid username or password");
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error during user login");
+                return StatusCode(500, "Internal Server Error");
+            }
         }
+
     }
 
 }
